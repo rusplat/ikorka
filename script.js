@@ -1,5 +1,5 @@
 const products = [
-    { id: 1, name: "Икра черная осетр (500г)", price: 28000, oldPrice: 40000, img: "images/black.jpg" },
+    { id: 1, name: "Икра черная осетр (500г)", price: 21000, oldPrice: 30000, img: "images/black.jpg" },
     { id: 2, name: "Икра красная кета (500г)", price: 4500, oldPrice: 6500, img: "images/red.jpg" },
     { id: 3, name: "Икра красная горбуша (500г)", price: 3800, oldPrice: 5500, img: "images/red2.jpg" }
 ];
