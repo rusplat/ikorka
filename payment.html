@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Оплата заказа</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container payment-container">
+        <h2>Оплата через СБП</h2>
+        <p>Заказ №<span id="order-num"></span></p>
+        <p class="total-price">К оплате: <span id="final-price">0</span> руб.</p>
+        
+        <div class="payment-info">
+            <p>Переведите сумму по СБП:</p>
+            <p><strong>+7 929 942 81 07</strong></p>
+            <p>Банк: <strong>КБ Солидарность</strong></p>
+        </div>
+
+        <div class="timer">Оплатите в течение: <span id="timer">15:00</span></div>
+        
+        <button id="check-payment" class="btn-large">Проверить оплату</button>
+        <div id="status-msg" style="display:none; margin-top:20px;">
+            <div class="loader"></div>
+            <p>Ваш заказ в обработке, с вами свяжутся в ближайшее время.</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Логика только для страницы оплаты
+        document.getElementById('order-num').textContent = Math.floor(Math.random() * 90000) + 10000;
+        document.getElementById('final-price').textContent = localStorage.getItem('totalPrice') || 0;
+        
+        let timeLeft = 900;
+        setInterval(() => {
+            if (timeLeft <= 0) return;
+            timeLeft--;
+            let m = Math.floor(timeLeft / 60);
+            let s = timeLeft % 60;
+            document.getElementById('timer').textContent = `${m}:${s < 10 ? '0' : ''}${s}`;
+        }, 1000);
+
+        document.getElementById('check-payment').onclick = function() {
+            this.style.display = 'none';
+            document.getElementById('status-msg').style.display = 'block';
+        };
+    </script>
+</body>
+</html>
