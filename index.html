@@ -10,6 +10,7 @@
     <header>
         <div class="container">
             <h1>Imperial Caviar</h1>
+            <!-- Добавим ID для кликабельности -->
             <div id="cart-status">Корзина: <span id="cart-count">0</span> | <span id="cart-sum">0</span> руб.</div>
         </div>
     </header>
@@ -23,8 +24,21 @@
         <!-- Товары добавятся через JS -->
     </main>
 
+    <!-- Новый блок для детального отображения корзины, скрыт по умолчанию -->
+    <section id="cart-details-section" class="container" style="display:none; background: rgba(255,255,255,0.9); color:#333; padding:20px; border-radius:8px; margin-top:20px; margin-bottom: 20px;">
+        <h2>Ваш Заказ</h2>
+        <div id="cart-items">
+            <!-- Сюда JS будет добавлять товары из корзины -->
+        </div>
+        <div class="cart-summary-bottom">
+            <p>Итого: <span id="cart-total-bottom">0</span> руб.</p>
+            <button class="btn-clear-cart" id="clear-cart-button">Очистить корзину</button>
+        </div>
+    </section>
+
+    <!-- Кнопка оформления заказа, видима только при наличии товаров в корзине -->
     <div class="container action-area">
-        <a href="order.html" class="btn-large">Оформить заказ с доставкой</a>
+        <a href="order.html" class="btn-large" id="main-checkout-btn" style="display:none;">Оформить заказ с доставкой</a>
     </div>
 
     <footer>
