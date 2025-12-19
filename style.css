@@ -14,114 +14,132 @@ header, footer { background: rgba(0,0,0,0.8); text-align: center; padding: 10px 
 .new-price { font-size: 1.5em; color: #e74c3c; font-weight: bold; }
 .btn-large { display: block; width: 100%; max-width: 300px; margin: 20px auto; background: #27ae60; color: #fff; text-align: center; padding: 15px; text-decoration: none; border-radius: 5px; border: none; cursor: pointer; }
 input { display: block; width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: none; }
-.form-container, .payment-container { background: rgba(0,0,0,0.8); margin-top: 50px; border-radius: 10px; text-align: center; }
-.tg-link { color: #3498db; }
-.loader { border: 4px solid #f3f3f3; border-top: 4px solid #27ae60; border-radius: 50%; width: 30px; height: 30px; animation: spin 2s linear infinite; margin: 10px auto; }
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-/* Стили для кликабельной корзины в шапке */
-#cart-status {
-    cursor: pointer;
-    padding: 5px 10px;
+/* Базовые стили для контейнеров формы и оплаты */
+.form-container, .payment-container {
+    background: rgba(0,0,0,0.8);
+    margin: 50px auto; /* Центрирование по горизонтали и отступ сверху */
+    border-radius: 10px;
+    text-align: center;
+    padding: 30px;
+    max-width: 600px; /* Ограничиваем максимальную ширину формы на десктопе */
+    box-sizing: border-box; /* Учитываем padding и border в общей ширине */
+    color: #fff; /* Цвет текста внутри контейнеров */
+}
+.form-container h2, .payment-container h2 {
+    color: #fff;
+    margin-bottom: 25px;
+}
+
+/* Стили для полей ввода */
+input {
+    display: block; /* Каждый input на новой строке */
+    width: calc(100% - 20px); /* Почти полная ширина, с небольшими отступами */
+    max-width: 400px; /* Максимальная ширина для input на больших экранах */
+    padding: 15px; /* Увеличили padding для удобства тапов */
+    margin: 15px auto; /* Центрируем input и добавляем отступы между ними */
+    border-radius: 8px; /* Скругленные углы */
+    border: 1px solid #555; /* Легкая рамка */
+    background-color: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон */
+    color: #fff; /* Белый текст */
+    font-size: 1.1em; /* Увеличили размер шрифта */
+    box-sizing: border-box;
+}
+input::placeholder {
+    color: #bbb; /* Цвет плейсхолдера */
+}
+input:focus {
+    outline: none;
+    border-color: #27ae60; /* Зеленая рамка при фокусе */
+    box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.3); /* Легкая тень при фокусе */
+}
+
+/* Стили для кнопки на страницах формы/оплаты */
+.form-container .btn-large, .payment-container .btn-large {
+    width: calc(100% - 20px); /* Аналогично input */
+    max-width: 400px; /* Максимальная ширина */
+    margin: 30px auto 0; /* Отступ сверху */
+    padding: 18px; /* Увеличили padding для кнопки */
+    font-size: 1.2em; /* Увеличили размер шрифта */
+}
+
+/* Стили для информации об оплате */
+.payment-info {
     background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
-    transition: background-color 0.3s ease;
-}
-#cart-status:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Стили для отображения товаров в детальной корзине */
-.cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px dashed #eee;
-}
-.cart-item:last-child {
-    border-bottom: none; /* Убрать линию под последним товаром */
-}
-.cart-item .item-name {
-    flex-grow: 1;
-    text-align: left;
-    margin-right: 15px;
-}
-.cart-item .quantity-controls {
-    display: flex;
-    align-items: center;
-    gap: 5px; /* Отступ между кнопками и числом */
-    margin: 0 15px;
-}
-.cart-item .quantity-controls button {
-    background-color: #eee;
-    border: 1px solid #ccc;
-    padding: 3px 8px;
-    cursor: pointer;
-    border-radius: 3px;
-}
-.cart-item .quantity-controls button:hover {
-    background-color: #ddd;
-}
-.cart-item .item-price {
-    font-weight: bold;
-    color: #a04040; /* Цвет цены */
-    min-width: 90px; /* Фиксированная ширина для выравнивания */
-    text-align: right;
-}
-.remove-item-btn {
-    background-color: #e74c3c; /* Красная кнопка удаления */
-    color: #fff;
-    border: none;
-    padding: 5px 8px;
-    border-radius: 3px;
-    cursor: pointer;
-    margin-left: 15px;
-    transition: background-color 0.3s ease;
-}
-.remove-item-btn:hover {
-    background-color: #c0392b;
-}
-
-/* Стили для кнопки "В корзину" на карточках товаров */
-.btn-add-to-cart {
-    background-color: #27ae60;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
-}
-.btn-add-to-cart:hover {
-    background-color: #229954;
-}
-
-/* Стили для кнопки "Очистить корзину" */
-.btn-clear-cart {
-    background-color: #95a5a6; /* Серый цвет */
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-.btn-clear-cart:hover {
-    background-color: #7f8c8d;
-}
-
-/* Стили для нижней части корзины (Итого и кнопки) */
-.cart-summary-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 15px;
+    border-radius: 8px;
     margin-top: 20px;
-    padding-top: 15px;
-    border-top: 1px solid #eee;
 }
-.cart-summary-bottom p {
+.payment-info p {
+    margin: 5px 0;
+    font-size: 1.1em;
+}
+.payment-info strong {
+    color: #ffd700; /* Золотой цвет для важных данных */
     font-size: 1.2em;
+}
+.timer {
+    font-size: 1.3em;
     font-weight: bold;
-    margin-bottom: 0; /* Убираем лишний отступ у параграфа */
+    margin: 25px 0;
+    color: #ffd700; /* Золотой цвет для таймера */
+}
+.total-price {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: #27ae60; /* Зеленый цвет для итоговой цены */
+    margin: 20px 0;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .form-container, .payment-container {
+        margin: 20px 15px; /* Меньшие внешние отступы по бокам */
+        border-radius: 8px; /* Скругление углов сохраняем */
+        padding: 20px; /* Уменьшаем внутренние отступы */
+        max-width: none; /* Разрешаем занимать всю доступную ширину */
+    }
+    h2 {
+        font-size: 2em; /* Заголовки чуть меньше */
+    }
+    input {
+        width: 100%; /* Занимают 100% ширины внутри контейнера */
+        max-width: none;
+        padding: 12px;
+        font-size: 1em;
+        margin: 10px auto;
+    }
+    .form-container .btn-large, .payment-container .btn-large {
+        width: 100%; /* Кнопка занимает 100% ширины */
+        max-width: none;
+        padding: 15px;
+        font-size: 1.1em;
+        margin-top: 20px;
+    }
+    .payment-info {
+        padding: 10px;
+    }
+    .payment-info p {
+        font-size: 1em;
+    }
+    .payment-info strong {
+        font-size: 1.1em;
+    }
+    .timer {
+        font-size: 1.1em;
+        margin: 15px 0;
+    }
+    .total-price {
+        font-size: 1.4em;
+        margin: 15px 0;
+    }
+}
+
+@media (max-width: 480px) { /* Дополнительные настройки для очень маленьких экранов */
+    .form-container, .payment-container {
+        margin: 10px; /* Еще меньше отступы */
+        padding: 15px;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
 }
