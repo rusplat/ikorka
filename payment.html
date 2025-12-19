@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container payment-container">
+    <!-- Убрали класс "container" -->
+    <div class="payment-container">
         <h2>Оплата через СБП</h2>
         <p>Заказ №<span id="order-num"></span></p>
         <p class="total-price">К оплате: <span id="final-price">0</span> руб.</p>
@@ -31,18 +32,25 @@
         document.getElementById('order-num').textContent = Math.floor(Math.random() * 90000) + 10000;
         document.getElementById('final-price').textContent = localStorage.getItem('totalPrice') || 0;
         
-        let timeLeft = 900;
-        setInterval(() => {
-            if (timeLeft <= 0) return;
+        let timeLeft = 900; // 15 минут в секундах
+        const timerElement = document.getElementById('timer');
+        const timerInterval = setInterval(() => {
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                timerElement.textContent = 'Время истекло';
+                document.getElementById('check-payment').disabled = true; // Отключить кнопку
+                return;
+            }
             timeLeft--;
             let m = Math.floor(timeLeft / 60);
             let s = timeLeft % 60;
-            document.getElementById('timer').textContent = `${m}:${s < 10 ? '0' : ''}${s}`;
+            timerElement.textContent = `${m}:${s < 10 ? '0' : ''}${s}`;
         }, 1000);
 
         document.getElementById('check-payment').onclick = function() {
             this.style.display = 'none';
             document.getElementById('status-msg').style.display = 'block';
+            clearInterval(timerInterval); // Остановить таймер после нажатия
         };
     </script>
 </body>
