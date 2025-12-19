@@ -4,7 +4,6 @@ const products = [
     { id: 2, name: "Икра красная кета (500гр)", price: 4500, oldPrice: 6500, img: "red.jpg" },
     { id: 3, name: "Икра красная горбуша (500гр)", price: 3800, oldPrice: 5500, img: "red2.jpg" }
     { id: 1, name: "Мясо краба (400гр)", price: 4890, oldPrice: 6990, img: "red3.jpg" },
-    { id: 2, name: "Икра красная кета (500г)", price: 4500, oldPrice: 6500, img: "red.jpg" },
     ];
 
 // Корзина, загружаем из LocalStorage или создаем пустую
