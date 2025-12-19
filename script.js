@@ -1,9 +1,11 @@
 // Данные о товарах
 const products = [
-    { id: 1, name: "Икра черная осетр (500г)", price: 21000, oldPrice: 30000, img: "black.jpg.webp" },
+    { id: 1, name: "Икра черная осетр (500гр)", price: 21000, oldPrice: 30000, img: "black.jpg.webp" },
+    { id: 2, name: "Икра красная кета (500гр)", price: 4500, oldPrice: 6500, img: "red.jpg" },
+    { id: 3, name: "Икра красная горбуша (500гр)", price: 3800, oldPrice: 5500, img: "red2.jpg" }
+    { id: 1, name: "Мясо краба (400гр)", price: 4890, oldPrice: 6990, img: "red3.jpg" },
     { id: 2, name: "Икра красная кета (500г)", price: 4500, oldPrice: 6500, img: "red.jpg" },
-    { id: 3, name: "Икра красная горбуша (500г)", price: 3800, oldPrice: 5500, img: "red2.jpg" }
-];
+    ];
 
 // Корзина, загружаем из LocalStorage или создаем пустую
 let cart = JSON.parse(localStorage.getItem('cart')) || {}; // Структура: {productId: {name: "...", price: N, qty: M}}
