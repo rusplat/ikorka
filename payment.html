@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Убрали класс "container" -->
     <div class="payment-container">
         <h2>Оплата через СБП</h2>
         <p>Заказ №<span id="order-num"></span></p>
@@ -14,7 +13,8 @@
         
         <div class="payment-info">
             <p>Переведите сумму по СБП:</p>
-            <p><strong>+7 929 942 81 07</strong></p>
+            <!-- Обернули номер телефона в span.phone-number -->
+            <p><strong><span class="phone-number">+7 929 942 81 07</span></strong></p> 
             <p>Банк: <strong>КБ Солидарность</strong></p>
         </div>
 
@@ -38,7 +38,7 @@
             if (timeLeft <= 0) {
                 clearInterval(timerInterval);
                 timerElement.textContent = 'Время истекло';
-                document.getElementById('check-payment').disabled = true; // Отключить кнопку
+                document.getElementById('check-payment').disabled = true; 
                 return;
             }
             timeLeft--;
@@ -50,7 +50,7 @@
         document.getElementById('check-payment').onclick = function() {
             this.style.display = 'none';
             document.getElementById('status-msg').style.display = 'block';
-            clearInterval(timerInterval); // Остановить таймер после нажатия
+            clearInterval(timerInterval); 
         };
     </script>
 </body>
