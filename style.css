@@ -62,84 +62,100 @@ input:focus {
     font-size: 1.2em; /* Увеличили размер шрифта */
 }
 
-/* Стили для информации об оплате */
-.payment-info {
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 20px;
-}
-.payment-info p {
-    margin: 5px 0;
-    font-size: 1.1em;
-}
-.payment-info strong {
-    color: #ffd700; /* Золотой цвет для важных данных */
-    font-size: 1.2em;
-}
-.timer {
-    font-size: 1.3em;
-    font-weight: bold;
-    margin: 25px 0;
-    color: #ffd700; /* Золотой цвет для таймера */
-}
-.total-price {
-    font-size: 1.6em;
-    font-weight: bold;
-    color: #27ae60; /* Зеленый цвет для итоговой цены */
-    margin: 20px 0;
+/* ... (Оставьте все существующие стили до медиа-запросов) ... */
+
+/* Стили для номера телефона */
+.payment-info .phone-number {
+    color: #ffd700 !important; /* Золотой цвет, принудительно */
+    text-decoration: none; /* Убираем подчеркивание, если браузер делает его ссылкой */
+    font-size: 1.8em; /* Делаем крупнее */
+    display: block; /* Занимает всю ширину, для лучшего отступа */
+    margin: 10px 0;
 }
 
-/* Адаптивность для мобильных устройств */
+/* Общие мобильные стили */
 @media (max-width: 768px) {
+    /* Контейнеры формы и оплаты */
     .form-container, .payment-container {
-        margin: 20px 15px; /* Меньшие внешние отступы по бокам */
-        border-radius: 8px; /* Скругление углов сохраняем */
-        padding: 20px; /* Уменьшаем внутренние отступы */
-        max-width: none; /* Разрешаем занимать всю доступную ширину */
+        margin: 0; /* Без горизонтальных отступов */
+        padding: 20px; /* Внутренние отступы */
+        max-width: none; /* Не ограничиваем максимальную ширину */
+        width: 100%; /* Занимает 100% ширины */
+        border-radius: 0; /* Убираем скругление углов для мобильных устройств */
+        min-height: 100vh; /* Минимальная высота на всю высоту экрана */
+        display: flex; /* Для центрирования содержимого */
+        flex-direction: column;
+        justify-content: center;
     }
-    h2 {
-        font-size: 2em; /* Заголовки чуть меньше */
+    h2 { 
+        font-size: 2.5em; /* Заголовки крупнее */
+        margin-bottom: 20px;
+    }
+    p { /* Общий текст */
+        font-size: 1.2em; 
+        margin-bottom: 10px;
     }
     input {
-        width: 100%; /* Занимают 100% ширины внутри контейнера */
-        max-width: none;
-        padding: 12px;
-        font-size: 1em;
-        margin: 10px auto;
+        width: calc(100% - 20px); /* Учитываем padding */
+        padding: 18px 10px; /* Увеличиваем padding для удобства тапов */
+        font-size: 1.2em; /* Крупнее шрифт в полях ввода */
+        margin: 12px auto; /* Отступы между полями */
+        border-radius: 5px;
     }
     .form-container .btn-large, .payment-container .btn-large {
-        width: 100%; /* Кнопка занимает 100% ширины */
-        max-width: none;
-        padding: 15px;
-        font-size: 1.1em;
-        margin-top: 20px;
+        width: calc(100% - 20px); /* Кнопка занимает почти всю ширину */
+        padding: 20px 10px; /* Крупнее кнопка */
+        font-size: 1.4em; /* Крупнее текст кнопки */
+        margin-top: 30px;
     }
+    
+    /* Стили для страницы оплаты */
     .payment-info {
-        padding: 10px;
+        padding: 15px;
+        margin-top: 25px;
     }
     .payment-info p {
-        font-size: 1em;
+        font-size: 1.2em;
+        margin: 8px 0;
     }
-    .payment-info strong {
-        font-size: 1.1em;
+    .payment-info strong { /* Для "Банк: КБ Солидарность" */
+        font-size: 1.3em;
+    }
+    .payment-info .phone-number { /* Уточнение для номера телефона */
+        font-size: 2.2em !important; /* Еще крупнее! */
     }
     .timer {
-        font-size: 1.1em;
-        margin: 15px 0;
+        font-size: 1.8em; /* Таймер крупнее */
+        margin: 25px 0;
     }
     .total-price {
-        font-size: 1.4em;
-        margin: 15px 0;
+        font-size: 2em; /* Итоговая цена крупнее */
+        margin: 25px 0;
     }
 }
 
-@media (max-width: 480px) { /* Дополнительные настройки для очень маленьких экранов */
+/* Дополнительные стили для очень маленьких экранов, если нужно */
+@media (max-width: 480px) { 
     .form-container, .payment-container {
-        margin: 10px; /* Еще меньше отступы */
-        padding: 15px;
+        padding: 15px; /* Немного уменьшаем padding */
     }
-    h2 {
+    h2 { font-size: 2.2em; }
+    p { font-size: 1.1em; }
+    input {
+        padding: 15px 8px;
+        font-size: 1.1em;
+    }
+    .form-container .btn-large, .payment-container .btn-large {
+        padding: 18px 8px;
+        font-size: 1.3em;
+    }
+    .payment-info .phone-number {
+        font-size: 2em !important; /* Еще крупнее! */
+    }
+    .timer {
+        font-size: 1.6em;
+    }
+    .total-price {
         font-size: 1.8em;
     }
 }
